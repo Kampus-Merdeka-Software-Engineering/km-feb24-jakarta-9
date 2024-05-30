@@ -1,17 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 html {
   width: 100%;
   height: 100%;
-  /* background-color: #A87676; */
   background-color: #53A8B6;
   font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
 }
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   padding: 0;
 }
+
 header {
-  background-color: #53A8B6; /* Warna latar belakang untuk header */
-  padding: 2rem;
+  background-color: #53A8B6;
+  padding: 20px 0;
   text-align: center;
 }
 
@@ -20,14 +27,13 @@ header:hover {
 }
 
 .container {
-  width: 100%;
+  width: 80%;
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center; /* Tengahkan konten horizontal */
+  margin: 0 auto;
+  text-align: center;
   background-color: #BBE4E9;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 @media (min-width: 576px) {
@@ -62,7 +68,7 @@ header:hover {
 
 .icon {
   display: flex;
-  margin: 1.25rem auto; /* Posisikan di tengah */
+  margin: 1.25rem auto;
   justify-content: center;
   border: 1rem solid #f3f3f3;
   border-radius: 100%;
@@ -70,25 +76,25 @@ header:hover {
   border-right: 1rem solid #53A8B6;
   border-bottom: 1rem solid #4682A9;
   border-left: 1rem solid #146C94;
-  width: 7.5rem;
-  height: 7.5rem;
+  max-width: 150px;
+  height: auto;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
 
 .image {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Tengahkan elemen dalam kolom */
+  align-items: center;
   z-index: 1;
-  margin: 0.625rem auto 1.25rem; /* Auto margin kiri dan kanan untuk menengahkan */
+  margin: 0.625rem auto 1.25rem;
 }
 
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
   }
-
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -98,7 +104,6 @@ header:hover {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
@@ -117,31 +122,28 @@ header:hover {
   font-weight: bold;
   font-size: 2rem;
   color: rgb(32, 28, 28);
-  margin: 2.25rem auto 0.625rem; /* Atur margin atas, bawah, dan kiri-kanan menjadi auto */
+  margin: 2.25rem auto 0.625rem;
   text-align: center;
   text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column; /* Menambahkan flex-direction agar elemen-elemen dalam satu kolom */
-  align-items: center; /* Tengahkan elemen-elemen dalam sumbu utama */
+  flex-direction: column;
+  align-items: center;
   font-family: "Roboto Condensed", sans-serif;
 }
 
 .button {
   background-color: white;
   border-radius: 1.5rem;
-  cursor: pointer;
   text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
   display: block;
-  margin: 0.625rem auto; /* Atur margin atas dan bawah menjadi auto, dan kiri-kanan menjadi auto untuk memposisikan ke tengah */
-}
-h1 {
-  color: black;
-  font-weight: bold;
-  font-size: 2rem;
+  margin: 0.625rem auto;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .button:hover {
-  background-color: #53A8B6; /* Ubah warna background ketika kursor menunjuk */
+  background-color: #53A8B6;
 }
 
 .navbar {
@@ -149,9 +151,9 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #BBE4E9;
-  margin-left: -15px; /* Mengompensasi padding default */
-  margin-right: -15px; /* Mengompensasi padding default */
+  background-color: #176B87;
+  color: white;
+  margin: 0 auto;
 }
 
 .right-elements {
@@ -184,7 +186,8 @@ h1 {
 .dropdown-date,
 .dropdown-borough,
 .dropdown-year {
-  display: none;
+  opacity: 0; /* Ubah display: none; menjadi opacity: 0; */
+  visibility: hidden; /* Tambahkan visibility: hidden; */
   position: absolute;
   background-color: #53A8B6;
   min-width: 160px;
@@ -193,6 +196,7 @@ h1 {
   padding: 8px;
   top: calc(100% + 5px);
   left: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Tambahkan transisi */
 }
 
 /* Tambahkan aturan untuk menampilkan dropdown saat hover */
@@ -202,7 +206,8 @@ h1 {
 .dropdown-date:hover,
 .dropdown-borough:hover,
 .dropdown-year:hover {
-  display: block;
+  opacity: 1; /* Set opacity ke 1 saat dropdown ditampilkan */
+  visibility: visible; /* Set visibility ke visible saat dropdown ditampilkan */
 }
 
 .dropdown-date input[type="checkbox"],
@@ -251,24 +256,6 @@ h1 {
 .dropdown-year {
   pointer-events: auto;
 }
-
-/* .button {
-  position: relative;
-  display: inline-block;
-  float: right;
-  border: 1px solid black; 
-  border-radius: 2px;
-  align-items: end;
-  background-color: #FFD0D0;
-  padding-top: 9px;
-  padding-bottom: 9px;
-  padding-right:2rem;
-  padding-left: 2rem;
-}
-.button:hover {
-  background-color: rgb(250, 185, 185);
-} */
-/* Dropdown content (hidden by default) */
 section {
   background-color: #53A8B6;
   padding: 1rem;
@@ -287,9 +274,9 @@ section:hover {
   font-weight: bold;
   font-size: larger;
   background-color: #ACE2E1;
-  width: 15rem; /* Menetapkan lebar relatif untuk setiap elemen */
-  padding: 1rem; /* Menambahkan jarak di dalam setiap elemen */
-  gap: 1rem; /* Menambahkan jarak di luar setiap elemen */
+  width: 15rem;
+  padding: 1rem;
+  gap: 1rem;
   border-radius: 2rem;
 }
 
@@ -301,18 +288,16 @@ section:hover {
 }
 
 .p {
-  display: block; /* Mengubah elemen p menjadi blok */
+  display: block;
   background-color: #176B87;
   font-weight: bold;
   font-size: larger;
-  color: black;
-  margin-left: -15px; /* Membuat margin kiri -15px untuk mengompensasi padding default */
-  margin-right: -15px; /* Membuat margin kanan -15px untuk mengompensasi padding default */
-  padding: 2rem 0; /* Mengatur padding atas dan bawah saja */
+  color: rgb(255, 255, 255);
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 2rem 0;
   text-align: center;
-  width: calc(
-    100% + 30px
-  ); /* Menetapkan lebar 100% dengan penambahan margin kiri dan kanan */
+  width: calc(100% + 30px);
 }
 
 .p:hover {
@@ -321,18 +306,18 @@ section:hover {
 
 .row {
   display: flex;
-  justify-content: space-between; /* Menyebarkan elemen sepanjang baris */
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem; /* Tambahkan jarak antara kolom-kolom */
+  gap: 1rem;
   padding: 2rem;
 }
+
 .col {
-  flex: 1; /* Menggunakan flex untuk menyesuaikan ukuran kolom */
-  max-width: calc(
-    50% - 2rem
-  ); /* Setiap kolom harus memiliki lebar maksimum 50% minus jarak antar kolom */
+  flex: 1;
+  max-width: calc(50% - 2rem);
 }
+
 #data-table {
   border-collapse: collapse;
   width: 100%;
@@ -350,51 +335,201 @@ section:hover {
 }
 
 .pagination {
-  display: flex; /* Mengatur pagination secara horizontal */
-  justify-content: center; /* Pusatkan pagination secara horizontal */
-  list-style-type: none; /* Hilangkan bullets */
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
   padding: 0;
-  margin-top: 20px; /* Tambahkan margin atas untuk jarak dengan tabel */
+  margin-top: 20px;
 }
 
 .pagination li {
-  margin-right: 10px; /* Jarak antara setiap elemen pagination */
+  margin: 0 3px;
 }
 
 .pagination li a {
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #53A8B6;
+  border: 1px solid #050909;
   background-color: #f2f2f2;
 }
 
 .pagination li.active a {
-  background-color: #53A8B6; /* Warna latar belakang untuk halaman aktif */
+  background-color: #53A8B6;
 }
+
 footer {
-  background-color:#53A8B6;
+  background-color: #53A8B6;
   padding: 20px;
   text-align: center;
 }
-.footer:hover{
+
+.footer:hover {
   background-color: #79C2D0;
+  transition: 1s ease;
 }
+
 .nama {
   background-color: #4682A9;
-  padding: 1%;
+  padding: 1rem;
   margin: 5%;
   text-align: center;
   color: white;
   text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
 }
+
 .nama:hover {
   background-color: #79C2D0;
+  transition: 1s ease;
 }
+
 .profile {
-  max-width: 300px; /* Sesuaikan dengan kebutuhan */
-  display: inline-block; /* Agar elemen berada di tengah */
+  max-width: 100%;
+  display: inline-block;
+  text-align: center;
 }
+
 .profile img {
-  width: 20rem; /* Ubah nilai sesuai dengan kebutuhan */
-  height: 20rem; /* Tinggi gambar akan sama dengan lebarnya */
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  border-radius: 50%;
 }
+
+/* Responsivitas untuk perangkat mobile */
+@media (max-width: 576px) {
+  html {
+    font-size: 10px;
+  }
+
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .col {
+    flex: 1;
+    max-width: 100%;
+  }
+
+  .nama {
+    padding: 0.5rem;
+    margin: 2%;
+    font-size: 1rem;
+  }
+
+  .dropdown-date,
+  .dropdown-borough,
+  .dropdown-year {
+    position: static;
+    min-width: 100%;
+    box-shadow: none;
+    margin-top: 0.5rem;
+  }
+
+  .dropdate:hover + .dropdown-date,
+  .dropborough:hover + .dropdown-borough,
+  .dropyear:hover + .dropdown-year,
+  .dropdown-date:hover,
+  .dropdown-borough:hover,
+  .dropdown-year:hover {
+    display: block;
+    position: static;
+  }
+}
+
+/* Responsivitas untuk perangkat tablet */
+@media (min-width: 577px) and (max-width: 991px) {
+  html {
+    font-size: 12px;
+  }
+
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .nama {
+    padding: 0.75rem;
+    margin: 3%;
+    font-size: 1.25rem;
+  }
+
+  .dropdown-date,
+  .dropdown-borough,
+  .dropdown-year {
+    width: 200px;
+  }
+
+  .dropdate:hover + .dropdown-date,
+  .dropborough:hover + .dropdown-borough,
+  .dropyear:hover + .dropdown-year,
+  .dropdown-date:hover,
+  .dropdown-borough:hover,
+  .dropdown-year:hover {
+    display: block;
+  }
+}
+
+/* Responsivitas untuk perangkat laptop */
+@media (min-width: 992px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row {
+    flex-direction: row;
+  }
+
+  .col {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .dropdown-date,
+  .dropdown-borough,
+  .dropdown-year {
+    width: 200px;
+  }
+
+  .dropdate + .dropdown-date {
+    top: calc(75% + 0.8rem);
+    left: auto;
+    right: 24.1rem;
+  }
+
+  .dropborough + .dropdown-borough {
+    top: calc(75% + 0.8rem);
+    left: auto;
+    right: 20rem;
+  }
+
+  .dropyear + .dropdown-year {
+    top: calc(75% + 0.8rem);
+    left: auto;
+    right: 14.3rem;
+  }
+}
+
