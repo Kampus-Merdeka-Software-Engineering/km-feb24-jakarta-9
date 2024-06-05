@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Capstone Project Team 9</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css">
     <link rel="stylesheet" type="text/css" href="./index.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chartjs-chart-geo"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <script defer src="./index.js"></script>
   </head>
   <body>
+    <div class="container">
+      <div class="loading-container">
+          <div class="loading-line-container">
+              <span class="loading-percent">100%</span>
+              <div class="loading-line startLoading"></div>
+          </div>
+      </div>
+  </div>
     <header class="header">
       <div class="container">
         <br />
@@ -114,30 +126,10 @@
       </div>
 
       <br />
-      <!-- <div class="container">
-            <div class="row">
-              <div class="col">
-                <p class="p">Unit Trend by Residential Units</p>
-                <canvas id="doughnutChart1" style="max-width: 40rem;"></canvas>
-              </div>
-              <div class="col">
-                <p class="p">Unit Trend by Commercial Units</p>
-                <canvas id="doughnutChart2" style="max-width: 40rem;"></canvas>
-              </div>
-            </div>
-        </div> -->
-
-      <div class="container">
-        <p class="p">Tabel Data</p>
-        <div class="data-table" id="table-container">
-          <table id="data-table" class="data-table">
-            <!-- Tabel akan ditampilkan di sini -->
-          </table>
-          <ul id="page-numbers" class="pagination">
-            <!-- Angka halaman akan ditampilkan di sini -->
-          </ul>
-        </div>
-        <br />
+        <div class="container">
+          <p class="p">Tabel Data</p>
+            <table id="tableData" class="display"></table>
+          <br />
       </div>
     </section>
 
@@ -284,6 +276,7 @@
         </div>
       </div>
     </footer>
+  </div>
     <script>
       document
         .getElementById("about-us-btn")
