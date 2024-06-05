@@ -197,8 +197,9 @@ function visualize(data) {
 }
 
 function createTable(data) {
-  if (tableView !== null) {
-    tableView.clear();
+  if (tableView) {
+    // Hapus instance DataTable yang sudah ada sebelum membuat yang baru
+    tableView.destroy();
   }
   const dataSet = data.map(d => {
     const fields = Object.keys(d);
@@ -217,6 +218,7 @@ function createTable(data) {
       data: dataSet
   });
 }
+
 
 // Fungsi untuk memperbarui total
 async function updateTotals(data) {
