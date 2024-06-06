@@ -219,6 +219,7 @@ function createTable(data) {
   });
 }
 
+
 // Fungsi untuk memperbarui total
 async function updateTotals(data) {
   // Total keseluruhan untuk kolom TOTAL_UNITS
