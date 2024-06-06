@@ -6,9 +6,54 @@ html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
+
+.navbar {
+  background-color: #333;
+  /* Warna latar belakang navbar */
+  color: #fff;
+  /* Warna teks pada navbar */
+  padding: 10px;
+  /* Ruang padding di sekitar elemen navbar */
+  display: flex;
+  /* Menggunakan flexbox untuk mengatur tata letak */
+  justify-content: space-between;
+  /* Membuat ruang di antara elemen navbar */
+}
+
+.navbar-brand,
+.navbar-nav {
+  display: flex;
+  /* Menggunakan flexbox untuk mengatur tata letak */
+  align-items: center;
+  /* Pusatkan vertikal elemen navbar */
+  color: white;
+}
+
+.nav-item {
+  margin-right: 15px;
+  color: white;
+}
+
+.nav-link {
+  color: white;
+}
+
+.main-content {
+  padding: 20px;
+  /* Ruang di sekitar konten utama */
+}
+
+/* Gaya tambahan sesuai kebutuhan */
+.content-section {
+  margin-bottom: 20px;
+  /* Ruang di bawah setiap bagian konten */
+}
+
 
 body {
   margin: 0;
@@ -94,6 +139,7 @@ header:hover {
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -103,6 +149,7 @@ header:hover {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -128,21 +175,6 @@ header:hover {
   flex-direction: column;
   align-items: center;
   font-family: "Roboto Condensed", sans-serif;
-}
-
-.button {
-  background-color: white;
-  border-radius: 1.5rem;
-  text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
-  display: block;
-  margin: 0.625rem auto;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.button:hover {
-  background-color: #53A8B6;
 }
 
 .navbar {
@@ -204,9 +236,9 @@ header:hover {
 }
 
 /* Tambahkan aturan untuk menampilkan dropdown saat hover */
-.dropdate:hover + .dropdown-date,
-.dropborough:hover + .dropdown-borough,
-.dropyear:hover + .dropdown-year,
+.dropdate:hover+.dropdown-date,
+.dropborough:hover+.dropdown-borough,
+.dropyear:hover+.dropdown-year,
 .dropdown-date:hover,
 .dropdown-borough:hover,
 .dropdown-year:hover {
@@ -227,9 +259,9 @@ header:hover {
   align-items: center;
 }
 
-.dropdown-date label > span,
-.dropdown-borough label > span,
-.dropdown-year label > span {
+.dropdown-date label>span,
+.dropdown-borough label>span,
+.dropdown-year label>span {
   margin-right: 8px;
 }
 
@@ -239,19 +271,19 @@ header:hover {
   margin-left: 0;
 }
 
-.dropborough + .dropdown-borough {
+.dropborough+.dropdown-borough {
   top: calc(75% + 0.8rem);
   left: auto;
   right: 20rem;
 }
 
-.dropdate + .dropdown-date {
+.dropdate+.dropdown-date {
   top: calc(75% + 0.8rem);
   left: auto;
   right: 24.1rem;
 }
 
-.dropyear + .dropdown-year {
+.dropyear+.dropdown-year {
   top: calc(75% + 0.8rem);
   left: auto;
   right: 14.3rem;
@@ -440,9 +472,9 @@ footer {
     margin-top: 0.5rem;
   }
 
-  .dropdate:hover + .dropdown-date,
-  .dropborough:hover + .dropdown-borough,
-  .dropyear:hover + .dropdown-year,
+  .dropdate:hover+.dropdown-date,
+  .dropborough:hover+.dropdown-borough,
+  .dropyear:hover+.dropdown-year,
   .dropdown-date:hover,
   .dropdown-borough:hover,
   .dropdown-year:hover {
@@ -485,9 +517,9 @@ footer {
     width: 200px;
   }
 
-  .dropdate:hover + .dropdown-date,
-  .dropborough:hover + .dropdown-borough,
-  .dropyear:hover + .dropdown-year,
+  .dropdate:hover+.dropdown-date,
+  .dropborough:hover+.dropdown-borough,
+  .dropyear:hover+.dropdown-year,
   .dropdown-date:hover,
   .dropdown-borough:hover,
   .dropdown-year:hover {
@@ -521,19 +553,19 @@ footer {
     width: 200px;
   }
 
-  .dropdate + .dropdown-date {
+  .dropdate+.dropdown-date {
     top: calc(75% + 0.8rem);
     left: auto;
     right: 24.1rem;
   }
 
-  .dropborough + .dropdown-borough {
+  .dropborough+.dropdown-borough {
     top: calc(75% + 0.8rem);
     left: auto;
     right: 20rem;
   }
 
-  .dropyear + .dropdown-year {
+  .dropyear+.dropdown-year {
     top: calc(75% + 0.8rem);
     left: auto;
     right: 14.3rem;
@@ -610,6 +642,7 @@ footer {
   0% {
     width: 0%;
   }
+
   100% {
     width: 100%;
   }
@@ -622,4 +655,3 @@ footer {
   animation-duration: 4s;
   animation-timing-function: cubic-bezier(0, 0, 0, 0);
 }
-
