@@ -180,6 +180,8 @@ function filterData() {
 
   // Panggil fungsi visualize untuk memperbarui visualisasi
   visualize(filteredData); // Perbaiki pemanggilan dengan mengirimkan filteredData
+  // Update table with filtered data
+  createTable(filteredData);
 }
 
 // Fungsi untuk memperbarui visualisasi berdasarkan data yang difilter
@@ -201,19 +203,59 @@ function createTable(data) {
     // Hapus instance DataTable yang sudah ada sebelum membuat yang baru
     tableView.destroy();
   }
-  const dataSet = data.map(d => {
+
+  // Ambil nilai yang dipilih dari checkbox borough
+  const selectedBoroughs = Array.from(
+    document.querySelectorAll('input[name="borough"]:checked')
+  ).map((cb) => cb.value);
+  // Ambil nilai yang dipilih dari checkbox date
+  const selectedDates = Array.from(
+    document.querySelectorAll('input[name="date"]:checked')
+  ).map((cb) => cb.value);
+  // Ambil nilai yang dipilih dari checkbox year
+  const selectedYears = Array.from(
+    document.querySelectorAll('input[name="year"]:checked')
+  ).map((cb) => cb.value);
+
+  // Filter data berdasarkan filter yang dipilih
+  const filteredData = data.filter((item) => {
+    const dateSplited = item.SALE_DATE.split('/');
+    const day = dateSplited[0];
+    const month = dateSplited[1];
+    const year = dateSplited[2];
+
+    const saleDate = new Date(`${year}-${month}-${day}`);
+    const saleMonthYear = saleDate.toLocaleString("default", {
+      month: "short",
+      year: "numeric",
+    });
+    const saleYear = saleDate.getFullYear().toString();
+
+    return (
+      (selectedBoroughs.length === 0 || selectedBoroughs.includes(item.BOROUGH_NAME)) &&
+      (selectedDates.length === 0 || selectedDates.includes(saleMonthYear)) &&
+      (selectedYears.length === 0 || selectedYears.includes(saleYear))
+    );
+  });
+
+  const dataSet = filteredData.map(d => {
     const fields = Object.keys(d);
     return fields.map(field => d[field]);
   });
+
   tableView = new DataTable('#tableData', {
       columns: [
-          { title: 'BOROUGH_NAME' },
-          { title: 'NEIGHBORHOOD' },
-          { title: 'BUILDING_CLASS_CATEGORY' },
-          { title: 'RESIDENTIAL_UNITS' },
-          { title: 'COMMERCIAL_UNITS' },
-          { title: 'YEAR_BUILT' },
-          { title: 'SALE_DATE' }
+      { title: 'BOROUGH_NAME' },
+      { title: 'NEIGHBORHOOD' },
+      { title: 'BUILDING_CLASS_CATEGORY' },
+      { title: 'LOT.' },
+      { title: 'RESIDENTIAL_UNITS' },
+      { title: 'COMMERCIAL_UNITS' },
+      { title: 'TOTAL_UNITS.' },
+      { title: 'GROSS_SQUARE_FEET' },
+      { title: 'YEAR_BUILT' },
+      { title: 'SALE_PRICE' },
+      { title: 'SALE_DATE' }
       ],
       data: dataSet
   });
@@ -222,22 +264,60 @@ function createTable(data) {
 
 // Fungsi untuk memperbarui total
 async function updateTotals(data) {
-  // Total keseluruhan untuk kolom TOTAL_UNITS
-  const totalUnits = data.reduce(
+  // Ambil nilai yang dipilih dari checkbox borough
+  const selectedBoroughs = Array.from(
+    document.querySelectorAll('input[name="borough"]:checked')
+  ).map((cb) => cb.value);
+  // Ambil nilai yang dipilih dari checkbox date
+  const selectedDates = Array.from(
+    document.querySelectorAll('input[name="date"]:checked')
+  ).map((cb) => cb.value);
+  // Ambil nilai yang dipilih dari checkbox year
+  const selectedYears = Array.from(
+    document.querySelectorAll('input[name="year"]:checked')
+  ).map((cb) => cb.value);
+
+  // Filter data sesuai dengan filter yang dipilih
+  const filteredData = data.filter((item) => {
+    const dateSplited = item.SALE_DATE.split('/');
+    const day = dateSplited[0];
+    const month = dateSplited[1];
+    const year = dateSplited[2];
+
+    const saleDate = new Date(`${year}-${month}-${day}`);
+    const saleMonthYear = saleDate.toLocaleString("default", {
+      month: "short",
+      year: "numeric",
+    });
+    const saleYear = saleDate.getFullYear().toString();
+
+    return (
+      (selectedBoroughs.length === 0 || selectedBoroughs.includes(item.BOROUGH_NAME)) &&
+      (selectedDates.length === 0 || selectedDates.includes(saleMonthYear)) &&
+      (selectedYears.length === 0 || selectedYears.includes(saleYear))
+    );
+  });
+
+  // Total keseluruhan untuk kolom TOTAL_UNITS setelah difilter
+  const totalUnits = filteredData.reduce(
     (acc, property) => acc + parseFloat(property.TOTAL_UNITS),
     0
   );
 
-  // Buat Set untuk menyimpan nilai unik dari kolom BOROUGH_NAME
-  const uniqueBoroughs = new Set(data.map((property) => property.BOROUGH_NAME));
+  // Buat Set untuk menyimpan nilai unik dari kolom BOROUGH_NAME setelah difilter
+  const uniqueBoroughs = new Set(filteredData.map((property) => property.BOROUGH_NAME));
 
-  // Hitung total untuk setiap kolom hanya untuk nilai unik di kolom BOROUGH_NAME
+  // Hitung total untuk setiap kolom hanya untuk nilai unik di kolom BOROUGH_NAME setelah difilter
   const totalBorough = uniqueBoroughs.size;
+
+  // Hitung total untuk kolom SALE_PRICE setelah difilter
   const totalSalePrice =
-    data.reduce((acc, property) => acc + parseFloat(property.SALE_PRICE), 0) /
+    filteredData.reduce((acc, property) => acc + parseFloat(property.SALE_PRICE), 0) /
     1000000000; // Ubah ke milyar
+
+  // Hitung total untuk kolom LOT setelah difilter
   const totalLot =
-    data.reduce((acc, property) => acc + parseFloat(property.LOT), 0) / 1000000; // Ubah ke juta
+    filteredData.reduce((acc, property) => acc + parseFloat(property.LOT), 0) / 1000000; // Ubah ke juta
 
   // Format total sale price menjadi format yang diinginkan (misal: 89,3M)
   const formattedTotalSalePrice =
@@ -259,7 +339,6 @@ async function updateTotals(data) {
   // Format total units menjadi format yang diinginkan dengan pemisah ribuan
   const formattedTotalUnits = totalUnits.toLocaleString("id-ID");
 
- 
   // Perbarui nilai elemen HTML
   document.querySelector(".col-total-borough h1").textContent = totalBorough;
   document.querySelector(".col-total-sale-price h1").textContent = formattedTotalSalePrice;
@@ -267,11 +346,9 @@ async function updateTotals(data) {
   document.querySelector(".col-total-units h1").textContent = formattedTotalUnits;
 }
 
-//line chart
-// Fungsi untuk mengambil data dan memperbarui chart berdasarkan filter
+
 async function fetchLineChartData(data) {
   try {
-    // Daftar warna yang ditentukan
     const boroughColors = {
       Manhattan: 'gray',
       Bronx: 'navy',
@@ -280,36 +357,53 @@ async function fetchLineChartData(data) {
       Brooklyn: 'purple'
     };
 
-    // Ekstrak bulan, tahun, dan harga penjualan dari data
-    const salesData = {};
-    const startDate = new Date("2016-09-01");
-    const endDate = new Date("2017-08-31");
+    // Ambil nilai yang dipilih dari checkbox borough
+    const selectedBoroughs = Array.from(
+      document.querySelectorAll('input[name="borough"]:checked')
+    ).map((cb) => cb.value);
+    // Ambil nilai yang dipilih dari checkbox date
+    const selectedDates = Array.from(
+      document.querySelectorAll('input[name="date"]:checked')
+    ).map((cb) => cb.value);
+    // Ambil nilai yang dipilih dari checkbox year
+    const selectedYears = Array.from(
+      document.querySelectorAll('input[name="year"]:checked')
+    ).map((cb) => cb.value);
 
-    data.forEach((entry) => {
+    // Filter data sesuai dengan filter yang dipilih
+    const filteredData = data.filter((entry) => {
+      const saleDate = new Date(entry["SALE_DATE"]);
+      const month = saleDate.toLocaleString("default", { month: "short" });
+      const year = saleDate.getFullYear().toString();
+      const label = `${month} ${year}`;
+
+      return (
+        (selectedBoroughs.length === 0 || selectedBoroughs.includes(entry["BOROUGH_NAME"])) &&
+        (selectedDates.length === 0 || selectedDates.includes(label)) &&
+        (selectedYears.length === 0 || selectedYears.includes(year))
+      );
+    });
+
+    // Ekstrak bulan, tahun, dan harga penjualan dari data yang sudah difilter
+    const salesData = {};
+    filteredData.forEach((entry) => {
       const saleDate = new Date(entry["SALE_DATE"]);
       const salePrice = parseFloat(entry["SALE_PRICE"]);
       const borough = entry["BOROUGH_NAME"];
 
-      // Cek apakah filter borough, date, dan year terpilih
-      const boroughChecked = Array.from(document.querySelectorAll('input[name="borough"]:checked')).length > 0;
-      const datesChecked = Array.from(document.querySelectorAll('input[name="date"]:checked')).length > 0;
-      const yearsChecked = Array.from(document.querySelectorAll('input[name="year"]:checked')).length > 0;
+      const month = saleDate.toLocaleString("default", { month: "short" });
+      const year = saleDate.getFullYear();
+      const label = `${month} ${year}`;
 
-      if (!isNaN(salePrice) && saleDate >= startDate && saleDate <= endDate && boroughChecked && datesChecked && yearsChecked) {
-        const month = saleDate.toLocaleString("default", { month: "short" });
-        const year = saleDate.getFullYear();
-        const label = `${month} ${year}`;
-
-        if (!salesData[borough]) {
-          salesData[borough] = {};
-        }
-
-        if (!salesData[borough][label]) {
-          salesData[borough][label] = 0;
-        }
-
-        salesData[borough][label] += salePrice; // Menambahkan harga penjualan ke label yang sesuai
+      if (!salesData[borough]) {
+        salesData[borough] = {};
       }
+
+      if (!salesData[borough][label]) {
+        salesData[borough][label] = 0;
+      }
+
+      salesData[borough][label] += salePrice;
     });
 
     // Menyiapkan data untuk chart
@@ -339,7 +433,7 @@ async function fetchLineChartData(data) {
         fill: false,
         borderColor: boroughColors[borough],
         tension: 0.1,
-        hidden: !document.querySelector(`input[name="borough"][value="${borough}"]:checked`) // Sembunyikan dataset jika filter borough tidak dipilih
+        hidden: !selectedBoroughs.includes(borough) // Sembunyikan dataset jika filter borough tidak dipilih
       });
     });
 
@@ -381,30 +475,54 @@ async function fetchLineChartData(data) {
     console.error("Error fetching or parsing data:", error);
   }
 }
+
+
+//barchart
 // Fungsi untuk mengumpulkan dan memproses data untuk grafik batang
 function fetchBarChartData(data) {
-  // Daftar warna yang ditentukan
-  const boroughColors = {
-    Manhattan: 'gray',
-    Bronx: 'navy',
-    Queens: 'powder blue',
-    "Staten Island": 'teal',
-    Brooklyn: 'purple'
-  };
+  try {
+    const boroughColors = {
+      Manhattan: 'gray',
+      Bronx: 'navy',
+      Queens: 'powder blue',
+      "Staten Island": 'teal',
+      Brooklyn: 'purple'
+    };
 
-  // Mengelompokkan data berdasarkan tahun dari SALE_DATE dan BOROUGH_NAME
-  const groupedData = {};
-  data.forEach((entry) => {
-    const year = new Date(entry["SALE_DATE"]).getFullYear();
-    const borough = entry["BOROUGH_NAME"] || entry["BOROUGH"];
+    // Ambil nilai yang dipilih dari checkbox borough
+    const selectedBoroughs = Array.from(
+      document.querySelectorAll('input[name="borough"]:checked')
+    ).map((cb) => cb.value);
+    // Ambil nilai yang dipilih dari checkbox date
+    const selectedDates = Array.from(
+      document.querySelectorAll('input[name="date"]:checked')
+    ).map((cb) => cb.value);
+    // Ambil nilai yang dipilih dari checkbox year
+    const selectedYears = Array.from(
+      document.querySelectorAll('input[name="year"]:checked')
+    ).map((cb) => cb.value);
 
-    // Cek apakah filter borough, date, dan year terpilih
-    const boroughChecked = Array.from(document.querySelectorAll('input[name="borough"]:checked')).length > 0;
-    const datesChecked = Array.from(document.querySelectorAll('input[name="date"]:checked')).length > 0;
-    const yearsChecked = Array.from(document.querySelectorAll('input[name="year"]:checked')).length > 0;
+    // Filter data sesuai dengan filter yang dipilih
+    const filteredData = data.filter((entry) => {
+      const year = new Date(entry["SALE_DATE"]).getFullYear().toString();
+      const borough = entry["BOROUGH_NAME"] || entry["BOROUGH"];
+      const saleDate = new Date(entry["SALE_DATE"]);
+      const month = saleDate.toLocaleString("default", { month: "short" });
+      const label = `${month} ${year}`;
 
-    // Hanya tambahkan data jika filter borough, date, dan year terpilih
-    if (boroughChecked && datesChecked && yearsChecked) {
+      return (
+        (selectedBoroughs.length === 0 || selectedBoroughs.includes(borough)) &&
+        (selectedDates.length === 0 || selectedDates.includes(label)) &&
+        (selectedYears.length === 0 || selectedYears.includes(year))
+      );
+    });
+
+    // Mengelompokkan data berdasarkan tahun dan borough
+    const groupedData = {};
+    filteredData.forEach((entry) => {
+      const year = new Date(entry["SALE_DATE"]).getFullYear().toString();
+      const borough = entry["BOROUGH_NAME"] || entry["BOROUGH"];
+
       if (!groupedData[year]) {
         groupedData[year] = {};
       }
@@ -415,49 +533,52 @@ function fetchBarChartData(data) {
         };
       }
 
-      // Menambahkan total dari kedua kolom RESIDENTIAL_UNITS dan COMMERCIAL_UNITS
       const residentialUnits = parseFloat(entry["RESIDENTIAL_UNITS"]) || 0;
       const commercialUnits = parseFloat(entry["COMMERCIAL_UNITS"]) || 0;
 
-      // Hanya menambahkan jika nilai tidak NaN
       if (!isNaN(residentialUnits) && !isNaN(commercialUnits)) {
         groupedData[year][borough].totalUnits +=
           residentialUnits + commercialUnits;
       }
-    }
-  });
-
-  // Mengumpulkan tahun-tahun yang valid (tanpa NaN)
-  const years = Object.keys(groupedData).filter(
-    (year) => !isNaN(parseInt(year))
-  );
-
-  // Mengumpulkan boroughs yang unik
-  const boroughs = new Set();
-  years.forEach((year) => {
-    Object.keys(groupedData[year]).forEach((borough) => {
-      boroughs.add(borough);
     });
-  });
 
-  // Mengatur data untuk dataset chart
-  const datasets = Array.from(boroughs).map((borough) => {
-    const yearData = years.map(
-      (year) => groupedData[year][borough]?.totalUnits || 0
-    ); // Menggunakan optional chaining untuk menghindari kesalahan jika data tidak ada
+    // Mengumpulkan tahun-tahun yang valid (tanpa NaN)
+    const years = Object.keys(groupedData).filter(
+      (year) => !isNaN(parseInt(year))
+    );
+
+    // Mengumpulkan boroughs yang unik sesuai dengan filter yang dipilih
+    const selectedBoroughsSet = new Set(selectedBoroughs);
+    const boroughs = new Set();
+    years.forEach((year) => {
+      Object.keys(groupedData[year]).forEach((borough) => {
+        if (selectedBoroughsSet.size === 0 || selectedBoroughsSet.has(borough)) {
+          boroughs.add(borough);
+        }
+      });
+    });
+
+    // Mengatur data untuk dataset chart
+    const datasets = Array.from(boroughs).map((borough) => {
+      const yearData = years.map(
+        (year) => groupedData[year][borough]?.totalUnits || 0
+      ); // Menggunakan optional chaining untuk menghindari kesalahan jika data tidak ada
+      return {
+        label: borough,
+        data: yearData,
+        backgroundColor: boroughColors[borough], // Menggunakan warna sesuai borough
+        borderColor: boroughColors[borough],
+        borderWidth: 1,
+      };
+    });
+
     return {
-      label: borough,
-      data: yearData,
-      backgroundColor: boroughColors[borough], // Menggunakan warna sesuai borough
-      borderColor: boroughColors[borough],
-      borderWidth: 1,
+      labels: years,
+      datasets: datasets,
     };
-  });
-
-  return {
-    labels: years,
-    datasets: datasets,
-  };
+  } catch (error) {
+    console.error("Error fetching or parsing data:", error);
+  }
 }
 
 // Fungsi untuk merender grafik batang
@@ -505,31 +626,45 @@ async function renderBarChart(data) {
   }
 }
 
+//barchart2
+
 function prepareChartData(data) {
   const barLabels = [];
   const residentialUnits = [];
   const commercialUnits = [];
 
-  // Sort data by sale date
-  data.sort((a, b) => new Date(a.SALE_DATE) - new Date(b.SALE_DATE));
-
-  // Buat label bulan dan tahun berdasarkan data yang difilter
-  data.forEach(entry => {
+  // Filter data untuk rentang tanggal yang diinginkan (September 2016 - Agustus 2017)
+  const filteredData = data.filter(entry => {
     const saleDate = new Date(entry.SALE_DATE);
-    const monthYear = saleDate.toLocaleString("en-us", {
-      month: "long",
-      year: "numeric",
-    });
+    const year = saleDate.getFullYear();
+    const month = saleDate.getMonth() + 1; // Bulan dimulai dari 0 (Januari = 0)
 
-    if (!barLabels.includes(monthYear)) {
+    return year === 2016 && month >= 9 || year === 2017 && month <= 8;
+  });
+
+  // Buat label bulan dan tahun berdasarkan rentang tanggal yang difilter
+  for (let year = 2016; year <= 2017; year++) {
+    for (let month = 1; month <= 12; month++) {
+      if (year === 2016 && month < 9) continue; // Lewati bulan sebelum September 2016
+      if (year === 2017 && month > 8) continue; // Lewati bulan setelah Agustus 2017
+
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const monthYear = `${monthNames[month - 1]}, ${year}`;
       barLabels.push(monthYear);
       residentialUnits.push(0);
       commercialUnits.push(0);
     }
+  }
 
-    const monthIndex = barLabels.indexOf(monthYear);
-    residentialUnits[monthIndex] += parseFloat(entry.RESIDENTIAL_UNITS) || 0;
-    commercialUnits[monthIndex] += parseFloat(entry.COMMERCIAL_UNITS) || 0;
+  // Hitung total unit per bulan dari data yang difilter
+  filteredData.forEach(entry => {
+    const saleDate = new Date(entry.SALE_DATE);
+    const year = saleDate.getFullYear();
+    const month = saleDate.getMonth() + 1;
+    const index = (year - 2016) * 12 + (month - 9); // Hitung indeks berdasarkan bulan dan tahun
+
+    residentialUnits[index] += parseFloat(entry.RESIDENTIAL_UNITS) || 0;
+    commercialUnits[index] += parseFloat(entry.COMMERCIAL_UNITS) || 0;
   });
 
   const barDatasets = [
@@ -551,6 +686,7 @@ function prepareChartData(data) {
 
   return { barLabels, barDatasets };
 }
+
 
 function renderBarChart2(data) {
   const { barLabels, barDatasets } = prepareChartData(data);
@@ -583,6 +719,8 @@ function renderBarChart2(data) {
     },
   });
 }
+
+//animasi progress
 var i = 0;
 function move() {
   if (i == 0) {
