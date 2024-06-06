@@ -17,7 +17,7 @@ async function fetchData() {
 
 // Event listener untuk memuat data saat halaman dimuat
 window.onload = async function () {
-
+  move();
   cachedData = await fetchData();
 
   populateBoroughDropdown(cachedData); // Isi dropdown borough
@@ -30,6 +30,7 @@ window.onload = async function () {
   const filterButton = document.getElementById("filter-button");
   filterButton.addEventListener("click", async function(event) {
     filterData(); // Panggil filterData saat tombol filter diklik
+
   });
 };
 
@@ -182,6 +183,7 @@ function filterData() {
   visualize(filteredData); // Perbaiki pemanggilan dengan mengirimkan filteredData
   // Update table with filtered data
   createTable(filteredData);
+
 }
 
 // Fungsi untuk memperbarui visualisasi berdasarkan data yang difilter
@@ -741,37 +743,32 @@ function renderResidentialUnitsandCommercialUnits(data) {
 }
 
 //animasi progress
-var i = 0;
+let i = 0;
 function move() {
-  if (i == 0) {
+  if (i === 0) {
     i = 1;
-    var elem = document.getElementById("myBar");
-    var width = 10;
-    var id = setInterval(frame, 10);
+    const elem = document.getElementById("myBar");
+    let width = 0;
+    const id = setInterval(frame, 40); // Kecepatan animasi
+
     function frame() {
       if (width >= 100) {
         clearInterval(id);
         i = 0;
+        showContent();
       } else {
         width++;
         elem.style.width = width + "%";
-        elem.innerHTML = width  + "%";
+        elem.innerHTML = width + "%";
+        document.querySelector(".loading-percent").innerText = `${width}%`;
       }
     }
   }
 }
-const loadingPercent = document.querySelector(".loading-percent");
-const loadingLineContainer = document.querySelector(".loading-line-container");
 
-var percent = 0;
-var loop = setInterval(() => {
-    if (percent != 100) {
-        percent++;
-        loadingPercent.innerText = `${percent}%`;
-    } else {
-        clearInterval(loop)
-        loadingLineContainer.style.boxShadow = "0px 0px 2px 3px rgba(25, 135, 84, .5)"
-        loadingLineContainer.style.borderColor = "rgba(25, 135, 84, .5)";
-        loadingPercent.innerText = `Done !`;
-    }
-}, 40)
+function showContent() {
+  document.querySelector(".loading-container").style.display = "none";
+  document.querySelector(".content").style.display = "block";
+}
+
+
