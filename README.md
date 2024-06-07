@@ -54,6 +54,7 @@ https://km-feb24-jakarta-9.vercel.app/
 ![Screenshot Deck SE](https://github.com/Kampus-Merdeka-Software-Engineering/km-feb24-jakarta-9/assets/167766113/fb988f0f-47cd-4bab-a386-aff6702152f4)
 
 ## DOKUMENTASI QUALITY ASSURANCE
+https://drive.google.com/file/d/1sH0ce9ezOEyjM5DC_Cw1cmoY5rfQFDNM/view?usp=sharing
 
 ![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/154f509d-89b2-4cec-bb45-bcc3a3c59960)
 ![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/29df429d-c5db-4bd4-9b98-887a7675a091)
