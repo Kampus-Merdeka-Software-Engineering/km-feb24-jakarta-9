@@ -17,7 +17,7 @@ async function fetchData() {
 
 // Event listener untuk memuat data saat halaman dimuat
 window.onload = async function () {
-
+  move();
   cachedData = await fetchData();
 
   populateBoroughDropdown(cachedData); // Isi dropdown borough
@@ -30,8 +30,10 @@ window.onload = async function () {
   const filterButton = document.getElementById("filter-button");
   filterButton.addEventListener("click", async function(event) {
     filterData(); // Panggil filterData saat tombol filter diklik
+
   });
 };
+
 // Fungsi untuk mengisi dropdown borough
 function populateBoroughDropdown(data) {
   const boroughOrder = [
@@ -142,7 +144,6 @@ function populateYearDropdown(data) {
 }
 
 // Fungsi untuk memfilter data berdasarkan checkbox borough, date, dan year
-// Fungsi untuk memfilter data berdasarkan checkbox borough, date, dan year
 function filterData() {
   // Ambil nilai yang dipilih dari checkbox borough
   const selectedBoroughs = Array.from(
@@ -182,6 +183,7 @@ function filterData() {
   visualize(filteredData); // Perbaiki pemanggilan dengan mengirimkan filteredData
   // Update table with filtered data
   createTable(filteredData);
+
 }
 
 // Fungsi untuk memperbarui visualisasi berdasarkan data yang difilter
@@ -189,11 +191,11 @@ function visualize(data) {
   // Memanggil updateTotals() untuk memperbarui total setelah pemfilteran data
   updateTotals(data); // Perbaiki pemanggilan dengan mengirimkan data
   // Panggil fungsi untuk memperbarui line chart dan bar chart
-  fetchLineChartData(data);
-  renderBarChart(data);
+  fetchLineSalesTrendbyBoroughandSalePrice(data);
+  renderYearofTotalResidentialUnitsAndCommercialUnitsbyBorough(data);
 
   // Persiapkan dan render bar chart kedua
-  renderBarChart2(data);
+  renderResidentialUnitsandCommercialUnits(data);
   // Panggil fungsi createTable untuk memperbarui tabel
   createTable(data);
 }
@@ -244,20 +246,23 @@ function createTable(data) {
   });
 
   tableView = new DataTable('#tableData', {
-      columns: [
-      { title: 'BOROUGH_NAME' },
-      { title: 'NEIGHBORHOOD' },
-      { title: 'BUILDING_CLASS_CATEGORY' },
-      { title: 'LOT.' },
-      { title: 'RESIDENTIAL_UNITS' },
-      { title: 'COMMERCIAL_UNITS' },
-      { title: 'TOTAL_UNITS.' },
-      { title: 'GROSS_SQUARE_FEET' },
-      { title: 'YEAR_BUILT' },
-      { title: 'SALE_PRICE' },
-      { title: 'SALE_DATE' }
-      ],
-      data: dataSet
+    columns: [
+    { title: 'BOROUGH_NAME' },
+    { title: 'NEIGHBORHOOD' },
+    { title: 'BUILDING_CLASS_CATEGORY' },
+    { title: 'LOT.' },
+    { title: 'RESIDENTIAL_UNITS' },
+    { title: 'COMMERCIAL_UNITS' },
+    { title: 'TOTAL_UNITS.' },
+    { title: 'GROSS_SQUARE_FEET' },
+    { title: 'YEAR_BUILT' },
+    { title: 'SALE_PRICE' },
+    { title: 'SALE_DATE' }
+    ],
+    data: dataSet,
+    responsive: true,
+    autoWidth: false,
+    scrollX: true,
   });
 }
 
@@ -347,7 +352,7 @@ async function updateTotals(data) {
 }
 
 
-async function fetchLineChartData(data) {
+async function fetchLineSalesTrendbyBoroughandSalePrice(data) {
   try {
     const boroughColors = {
       Manhattan: 'gray',
@@ -479,7 +484,7 @@ async function fetchLineChartData(data) {
 
 //barchart
 // Fungsi untuk mengumpulkan dan memproses data untuk grafik batang
-function fetchBarChartData(data) {
+function fetchYearofTotalResidentialUnitsAndCommercialUnitsbyBorough(data) {
   try {
     const boroughColors = {
       Manhattan: 'gray',
@@ -582,9 +587,9 @@ function fetchBarChartData(data) {
 }
 
 // Fungsi untuk merender grafik batang
-async function renderBarChart(data) {
+async function renderYearofTotalResidentialUnitsAndCommercialUnitsbyBorough(data) {
   try {
-    const chartData = fetchBarChartData(data);
+    const chartData = fetchYearofTotalResidentialUnitsAndCommercialUnitsbyBorough(data);
     const config = {
       type: "bar",
       data: chartData,
@@ -628,56 +633,74 @@ async function renderBarChart(data) {
 
 //barchart2
 
-function prepareChartData(data) {
-  const barLabels = [];
-  const residentialUnits = [];
-  const commercialUnits = [];
+function ResidentialUnitsandCommercialUnits (data) {
+  const selectedBoroughs = Array.from(
+    document.querySelectorAll('input[name="borough"]:checked')
+  ).map((cb) => cb.value);
+  const selectedDates = Array.from(
+    document.querySelectorAll('input[name="date"]:checked')
+  ).map((cb) => cb.value);
+  const selectedYears = Array.from(
+    document.querySelectorAll('input[name="year"]:checked')
+  ).map((cb) => cb.value);
 
-  // Filter data untuk rentang tanggal yang diinginkan (September 2016 - Agustus 2017)
-  const filteredData = data.filter(entry => {
-    const saleDate = new Date(entry.SALE_DATE);
-    const year = saleDate.getFullYear();
-    const month = saleDate.getMonth() + 1; // Bulan dimulai dari 0 (Januari = 0)
+  const filteredData = data.filter((entry) => {
+    const saleDate = new Date(entry["SALE_DATE"]);
+    const month = saleDate.toLocaleString("default", { month: "short" });
+    const year = saleDate.getFullYear().toString();
+    const label = `${month} ${year}`;
+    const borough = entry["BOROUGH_NAME"] || entry["BOROUGH"];
 
-    return year === 2016 && month >= 9 || year === 2017 && month <= 8;
+    return (
+      (selectedBoroughs.length === 0 || selectedBoroughs.includes(borough)) &&
+      (selectedDates.length === 0 || selectedDates.includes(label)) &&
+      (selectedYears.length === 0 || selectedYears.includes(year))
+    );
   });
 
-  // Buat label bulan dan tahun berdasarkan rentang tanggal yang difilter
-  for (let year = 2016; year <= 2017; year++) {
-    for (let month = 1; month <= 12; month++) {
-      if (year === 2016 && month < 9) continue; // Lewati bulan sebelum September 2016
-      if (year === 2017 && month > 8) continue; // Lewati bulan setelah Agustus 2017
+  const barLabelsSet = new Set();
+  const residentialUnits = {};
+  const commercialUnits = {};
 
-      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      const monthYear = `${monthNames[month - 1]}, ${year}`;
-      barLabels.push(monthYear);
-      residentialUnits.push(0);
-      commercialUnits.push(0);
+  filteredData.forEach((entry) => {
+    const saleDate = new Date(entry["SALE_DATE"]);
+    const month = saleDate.toLocaleString("default", { month: "short" });
+    const year = saleDate.getFullYear().toString();
+    const label = `${month} ${year}`;
+
+    barLabelsSet.add(label);
+
+    if (!residentialUnits[label]) {
+      residentialUnits[label] = 0;
     }
-  }
+    if (!commercialUnits[label]) {
+      commercialUnits[label] = 0;
+    }
 
-  // Hitung total unit per bulan dari data yang difilter
-  filteredData.forEach(entry => {
-    const saleDate = new Date(entry.SALE_DATE);
-    const year = saleDate.getFullYear();
-    const month = saleDate.getMonth() + 1;
-    const index = (year - 2016) * 12 + (month - 9); // Hitung indeks berdasarkan bulan dan tahun
-
-    residentialUnits[index] += parseFloat(entry.RESIDENTIAL_UNITS) || 0;
-    commercialUnits[index] += parseFloat(entry.COMMERCIAL_UNITS) || 0;
+    residentialUnits[label] += parseFloat(entry["RESIDENTIAL_UNITS"]) || 0;
+    commercialUnits[label] += parseFloat(entry["COMMERCIAL_UNITS"]) || 0;
   });
+
+  const barLabels = Array.from(barLabelsSet).sort((a, b) => {
+    const [monthA, yearA] = a.split(" ");
+    const [monthB, yearB] = b.split(" ");
+    return new Date(`${monthA} 1, ${yearA}`) - new Date(`${monthB} 1, ${yearB}`);
+  });
+
+  const residentialData = barLabels.map((label) => residentialUnits[label] || 0);
+  const commercialData = barLabels.map((label) => commercialUnits[label] || 0);
 
   const barDatasets = [
     {
       label: "Total COMMERCIAL_UNITS",
-      data: commercialUnits,
+      data: commercialData,
       backgroundColor: "rgba(54, 162, 235, 0.2)",
       borderColor: "rgb(54, 162, 235)",
       borderWidth: 1,
     },
     {
       label: "Total RESIDENTIAL_UNITS",
-      data: residentialUnits,
+      data: residentialData,
       backgroundColor: "rgba(255, 99, 132, 0.2)",
       borderColor: "rgb(255, 99, 132)",
       borderWidth: 1,
@@ -687,9 +710,8 @@ function prepareChartData(data) {
   return { barLabels, barDatasets };
 }
 
-
-function renderBarChart2(data) {
-  const { barLabels, barDatasets } = prepareChartData(data);
+function renderResidentialUnitsandCommercialUnits(data) {
+  const { barLabels, barDatasets } = ResidentialUnitsandCommercialUnits(data);
   const barCtx = document.getElementById("barChart2").getContext("2d");
   if (barCtx.chart) {
     barCtx.chart.destroy(); // Hancurkan grafik sebelumnya jika ada
@@ -721,37 +743,32 @@ function renderBarChart2(data) {
 }
 
 //animasi progress
-var i = 0;
+let i = 0;
 function move() {
-  if (i == 0) {
+  if (i === 0) {
     i = 1;
-    var elem = document.getElementById("myBar");
-    var width = 10;
-    var id = setInterval(frame, 10);
+    const elem = document.getElementById("myBar");
+    let width = 0;
+    const id = setInterval(frame, 40); // Kecepatan animasi
+
     function frame() {
       if (width >= 100) {
         clearInterval(id);
         i = 0;
+        showContent();
       } else {
         width++;
         elem.style.width = width + "%";
-        elem.innerHTML = width  + "%";
+        elem.innerHTML = width + "%";
+        document.querySelector(".loading-percent").innerText = `${width}%`;
       }
     }
   }
 }
-const loadingPercent = document.querySelector(".loading-percent");
-const loadingLineContainer = document.querySelector(".loading-line-container");
 
-var percent = 0;
-var loop = setInterval(() => {
-    if (percent != 100) {
-        percent++;
-        loadingPercent.innerText = `${percent}%`;
-    } else {
-        clearInterval(loop)
-        loadingLineContainer.style.boxShadow = "0px 0px 2px 3px rgba(25, 135, 84, .5)"
-        loadingLineContainer.style.borderColor = "rgba(25, 135, 84, .5)";
-        loadingPercent.innerText = `Done !`;
-    }
-}, 40)
+function showContent() {
+  document.querySelector(".loading-container").style.display = "none";
+  document.querySelector(".content").style.display = "block";
+}
+
+
