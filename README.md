@@ -1,39 +1,34 @@
-## ABOUT NYC PROPERTY SALES
+# ABOUT NYC PROPERTY SALES
 
 This project aims to analyze the New York City property sales using a dataset that records every building or building unit sold over a 12-month period from September 2016 to August 2017.
 
-## FUNCTION
+# FUNCTION
 
 The function of this project is to display property sales in New York City for each borough based on total sale prices, residential units, commercial units, building class, and year built.
 
-# ROLE TEAM MEMBER:
+## ROLE TEAM MEMBER:
 
-    * Project Leader:
+* Project Leader:
+   Aufa Edith Ramdani
 
-        Aufa Edith Ramdani
+* Front End Engineering:
+   Lismala
+   Dameria Naomi Simatupang
+   Tomi Wijaya
 
-    * Front End Engineering:
+* Deployment:
+   Rangga Rizky Pratama
 
-        Lismala
-        Dameria Naomi Simatupang
-        Tomi Wijaya
+* Pitch Deck Team:
+   Distia ISma Nadhifah
+   Fauzia Rahmah
 
-    * Deployment:
+* Quality Assurance:
+   Afida Nurul Yasmin
+   Vina Nur Titisari
+   Brian Sanjaya
 
-        Rangga Rizky Pratama
-
-    * Pitch Deck Team:
-
-        Distia ISma Nadhifah
-        Fauzia Rahmah
-
-    * Quality Assurance:
-    
-        Afida Nurul Yasmin
-        Vina Nur Titisari
-        Brian Sanjaya
-
-# FITUR
+## FITUR
 
 * Fitur Navigasi Bar
 
@@ -60,15 +55,15 @@ The function of this project is to display property sales in New York City for e
 ![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/344be961-0919-4d9a-b56d-9113de26bd52)
 
 
-# LINK VERCEL (DEPLOYMENT):
+## LINK VERCEL (DEPLOYMENT):
 
 https://km-feb24-jakarta-9.vercel.app/
 
-# DOKUMENTASI PITCH DECK
+## DOKUMENTASI PITCH DECK
 
 ![Screenshot Deck SE](https://github.com/Kampus-Merdeka-Software-Engineering/km-feb24-jakarta-9/assets/167766113/fb988f0f-47cd-4bab-a386-aff6702152f4)
 
-# DOKUMENTASI QA
+## DOKUMENTASI QUALITY ASSURANCE
 
 ![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/154f509d-89b2-4cec-bb45-bcc3a3c59960)
 ![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/29df429d-c5db-4bd4-9b98-887a7675a091)
