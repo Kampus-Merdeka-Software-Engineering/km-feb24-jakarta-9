@@ -19,267 +19,247 @@
 </head>
 
 <body>
+  <div class="loading-container">
+    <div class="loading-percent">0%</div>
+    <div class="loading-line-container">
+      <div id="myBar" class="loading-line"></div>
+    </div>
+  </div>
   <div class="navbar">
-    <a href="#" class="navbar-brand">NYC PROPERTY SALES</a>
+    <a class="navbar-brand" href="#">NYC PROPERTY SALE</a>
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a href="#" class="nav-link" onclick="showSection('home')">
+      <li class="nav-item"><a class="nav-link" href="#">
           <i class="fas fa-home"></i> HOME
         </a>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link" onclick="showSection('dashboard')">
-          <i class="fas fa-tachometer-alt"></i> DASHBOARD
+      <li class="nav-item"><a class="nav-link" href="#dashboard">
+          <i class="fas fa-tachometer-alt"></i> DASHBORD
         </a>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link" onclick="showSection('our-teams')">
+      <li class="nav-item"><a class="nav-link" href="#about-us">
           <i class="fas fa-users"></i> OUR TEAMS
         </a>
       </li>
     </ul>
   </div>
 
-  <div class="main-content">
-    <section id="home" class="content-section">
-      <div class="container">
-        <div class="loading-container">
-          <div class="loading-line-container">
-            <span class="loading-percent">100%</span>
-            <div class="loading-line startLoading"></div>
-          </div>
-        </div>
+  <header class="header">
+    <div class="container">
+      <h1>PROJECT CAPSTONE TEAM NINE</h1>
+      <div class="image">
+        <img class="icon" loading="lazy" alt="" src="./img/logo9.png" />
       </div>
-      <header class="header">
-        <div class="container">
-          <br />
-          <h1>PROJECT CAPSTONE TEAM NINE</h1>
-          <div class="image">
-            <img class="icon" loading="lazy" alt="" src="./img/logo9.png" />
-          </div>
-          <div class="title">
-            <p>
-              Sales Trends Properties for sale by borough in New York City during
-              the 12 month period from September 2016 to Agustus 2017.
-            </p>
-          </div>
-      </header>
-    </section>
+      <div class="title">
+        <p>
+          Sales Trends Properties for sale by borough in New York City during
+          the 12 month period from September 2016 to Agustus 2017.
+        </p>
+        <button id="about-us-btn" class="button">About Us</button>
+      </div>
+    </div>
+  </header>
 
-    <section id="dashboard" class="content-section" style="display:none;">
-      <div class="container">
-        <div class="loading-container">
-          <div class="loading-line-container">
-            <span class="loading-percent">100%</span>
-            <div class="loading-line startLoading"></div>
-          </div>
-        </div>
-      </div>
-      <nav>
-        <div class="container">
-          <div class="filter-bar">
-            <h2>NYC PROPERTY SALES</h2>
-            <div class="right-elements">
-              <div class="date">
-                <button class="dropdate">
-                  Date
-                  <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-date" id="dropdown-date">
-                  <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
-                </div>
-              </div>
-              <div class="borough">
-                <button class="dropborough">
-                  Borough
-                  <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-borough" id="dropdown-borough">
-                  <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
-                </div>
-              </div>
-              <div class="year">
-                <button class="dropyear">
-                  Year
-                  <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-year" id="dropdown-year">
-                  <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
-                </div>
-              </div>
-              <button id="filter-button" class="filter">Filter</button>
+  <section>
+    <div class="container">
+      <div class="filter-bar">
+        <h2 class="dashboard" id="dashboard">NYC PROPERTY SALES</h2>
+        <div class="right-elements">
+          <div class="date">
+            <button class="dropdate">
+              Date
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-date" id="dropdown-date">
+              <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
             </div>
           </div>
-        </div>
-      </nav>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-total-borough">
-            <h1>0</h1>
-            <p>Total Borough</p>
+          <div class="borough">
+            <button class="dropborough">
+              Borough
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-borough" id="dropdown-borough">
+              <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
+            </div>
           </div>
-          <div class="col-total-sale-price">
-            <h1>0M</h1>
-            <p>Total Sale Price</p>
+          <div class="year">
+            <button class="dropyear">
+              Year
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-year" id="dropdown-year">
+              <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
+            </div>
           </div>
-          <div class="col-total-lot">
-            <h1>0jt</h1>
-            <p>Total Lot</p>
-          </div>
-          <div class="col-total-units">
-            <h1>0</h1>
-            <p>Total Units</p>
-          </div>
+          <button id="filter-button" class="filter">
+            <i class="fa fa-filter"></i> Filter
+          </button>
         </div>
       </div>
 
-      <div class="container">
-        <p class="p">Sales Trend by Borough and Sale Price</p>
-        <div>
-          <canvas id="myChart" style="width: 100%; max-width: 600rem"></canvas>
+      <div class="row">
+        <div class="col-total-borough">
+          <h1>0</h1>
+          <p>Total Borough</p>
         </div>
-        <br />
-      </div>
-      <div class="container">
-        <p class="p">Unit Trend by Residential Units and Commercial Units of Month, Year</p>
-        <div>
-          <canvas id="barChart2" style="width: 100%; max-width: 600rem"></canvas>
+        <div class="col-total-sale-price">
+          <h1>0M</h1>
+          <p>Total Sale Price</p>
         </div>
-        <br />
-      </div>
-
-      <div class="container">
-        <p class="p">Year of Total Residential Units & Commercial Units by Borough </p>
-        <div>
-          <canvas id="barChart" style="width: 100%; max-width: 600rem"></canvas>
+        <div class="col-total-lot">
+          <h1>0jt</h1>
+          <p>Total Lot</p>
         </div>
-        <br />
+        <div class="col-total-units">
+          <h1>0</h1>
+          <p>Total Units</p>
+        </div>
       </div>
+    </div>
 
-      <br />
-      <div class="container">
-        <p class="p">Tabel Data</p>
-        <table id="tableData" class="display"></table>
-        <br />
+    <div class="container">
+      <p class="p">Sales Trend by Borough and Sale Price</p>
+      <div>
+        <canvas id="myChart" style="width: 100%; max-width: 600rem"></canvas>
       </div>
-    </section>
+    </div>
+    <div class="container">
+      <p class="p">Unit Trend by Residential Units and Commercial Units of Month, Year</p>
+      <div>
+        <canvas id="barChart2" style="width: 100%; max-width: 600rem"></canvas>
+      </div>
+    </div>
 
-    <section id="our-teams" class="content-section" style="display:none;">
-      <footer class="footer">
-        <div class="container">
-          <br />
-          <h1 class="about-us" id="about-us">OUR GREAT TEAMS</h1>
-          <p>Introduce Our Self - TEAM 9</p>
-          <div class="row">
-            <div class="col">
-              <div class="profile">
-                <img src="./img/Disti-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Distia Isma Nadhifah</p>
-                  <p>Pitch Deck Team</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="profile">
-                <img src="./img/fauzia-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Fauzia Rahmah</p>
-                  <p>Pitch Deck Team</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="profile">
-                <img src="./img/aufa-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Aufa Edith Ramdani</p>
-                  <p>Project Leader</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="profile">
-                <img src="./img/naomi-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Dameria Naomi Simatupang</p>
-                  <p>Front End Engineer</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="profile">
-                <img src="./img/isma-removebg-preview (1).png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Lismala</p>
-                  <p>Front End Engineer</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="profile">
-                <img src="./img/tomi-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Tomi Wijaya</p>
-                  <p>Front End Engineer</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="profile">
-                <img src="./img/rangga2-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Rangga Rizky Pratama</p>
-                  <p>Deployment Team</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="profile">
-                <img src="./img/vina__1_-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Vina Nur Titisari</p>
-                  <p>Quality Assurance</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="profile">
-                <img src="./img/Afida-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Afida Nurul Yasmin</p>
-                  <p>Quality Assurance</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="profile">
-                <img src="./img/brian-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Brian Sanjaya</p>
-                  <p>Quality Assurance</p>
-                </div>
-              </div>
+    <div class="container">
+      <p class="p">Year of Total Residential Units & Commercial Units by Borough </p>
+      <div>
+        <canvas id="barChart" style="width: 100%; max-width: 600rem"></canvas>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="p">Tabel Data</p>
+      <table id="tableData" class="display"></table>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <h1 class="about-us" id="about-us">OUR TEAMS</h1>
+      <p>Introduce Our Self - TEAM 9</p>
+      <div class="row">
+        <div class="col">
+          <div class="profile">
+            <img src="./img/Disti-removebg-preview.png" alt="" style="border-radius: 50%" />
+            <div class="nama">
+              <p>Distia Isma Nadhifah</p>
+              <p>Pitch Deck Team</p>
             </div>
           </div>
         </div>
-      </footer>
-    </section>
+        <div class="col">
+          <div class="profile">
+            <img src="./img/fauzia-removebg-preview.png" alt="" style="border-radius: 50%" />
+            <div class="nama">
+              <p>Fauzia Rahmah</p>
+              <p>Pitch Deck Team</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="profile">
+            <img src="./img/aufa-removebg-preview.png" alt="" style="border-radius: 50%" />
+            <div class="nama">
+              <p>Aufa Edith Ramdani</p>
+              <p>Project Leader</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="profile">
+            <img src="./img/naomi-removebg-preview.png" alt="" style="border-radius: 50%" />
+            <div class="nama">
+              <p>Dameria Naomi Simatupang</p>
+              <p>Front End Engineer</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="profile">
+            <img src="./img/isma-removebg-preview (1).png" alt="" style="border-radius: 50%" />
+            <div class="nama">
+              <p>Lismala</p>
+              <p>Front End Engineer</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="profile">
+            <img src="./img/tomi-removebg-preview.png" alt="" style="border-radius: 50%" />
+            <div class="nama">
+              <p>Tomi Wijaya</p>
+              <p>Front End Engineer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="profile">
+            <img src="./img/rangga2-removebg-preview.png" alt="" style="border-radius: 50%" />
+            <div class="nama">
+              <p>Rangga Rizky Pratama</p>
+              <p>Deployment Team</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="profile">
+            <img src="./img/vina__1_-removebg-preview.png" alt="" style="border-radius: 50%" />
+            <div class="nama">
+              <p>Vina Nur Titisari</p>
+              <p>Quality Assurance</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="profile">
+            <img src="./img/Afida-removebg-preview.png" alt="" style="border-radius: 50%" />
+            <div class="nama">
+              <p>Afida Nurul Yasmin</p>
+              <p>Quality Assurance</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="profile">
+            <img src="./img/brian-removebg-preview.png" alt="" style="border-radius: 50%" />
+            <div class="nama">
+              <p>Brian Sanjaya</p>
+              <p>Quality Assurance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="bottom-bar">
+    <a href="mailto:jakarta.team9.tarevou@gmail.com" class="email-link">
+      <i class="fas fa-envelope"></i>  jakarta.team9.tarevou@gmail.com
+    </a>
+    <p>&copy; 2024 TEAM 9 - SECTION JAKARTA</p>
   </div>
 
   <script>
-    function showSection(sectionId) {
-      const sections = document.querySelectorAll('.content-section');
-      sections.forEach(section => {
-        section.style.display = section.id === sectionId ? 'block' : 'none';
+    document
+      .getElementById("about-us-btn")
+      .addEventListener("click", function () {
+        var aboutUsSection = document.getElementById("about-us");
+        aboutUsSection.scrollIntoView({ behavior: "smooth" });
       });
-    }
-
   </script>
 </body>
 
