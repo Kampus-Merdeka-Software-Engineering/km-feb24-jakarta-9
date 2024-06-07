@@ -16,7 +16,7 @@ The function of this project is to display property sales in New York City for e
 
 - Pitch Deck Team: Distia Isma Nadhifah, Fauzia Rahmah
 
--Quality Assurance: Afida Nurul Yasmin, Vina Nur Titisari, Brian Sanjaya
+- Quality Assurance: Afida Nurul Yasmin, Vina Nur Titisari, Brian Sanjaya
 
 ## FEATURES
 
