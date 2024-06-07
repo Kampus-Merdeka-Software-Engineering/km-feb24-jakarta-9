@@ -10,30 +10,30 @@ The function of this project is to display property sales in New York City for e
 
 * Project Leader:
 
-   Aufa Edith Ramdani
+- Aufa Edith Ramdani
 
 * Front End Engineering:
   
-   Lismala
-   Dameria Naomi Simatupang
-   Tomi Wijaya
+- Lismala
+- Dameria Naomi Simatupang
+- Tomi Wijaya
 
 * Deployment:
   
-   Rangga Rizky Pratama
+- Rangga Rizky Pratama
 
 * Pitch Deck Team:
   
-   Distia Isma Nadhifah
-   Fauzia Rahmah
+- Distia Isma Nadhifah
+- Fauzia Rahmah
 
 * Quality Assurance:
   
-   Afida Nurul Yasmin
-   Vina Nur Titisari
-   Brian Sanjaya
+- Afida Nurul Yasmin
+- Vina Nur Titisari
+- Brian Sanjaya
 
-## FITUR
+## FEATURES
 
 * Fitur Navigasi Bar
 
