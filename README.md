@@ -9,21 +9,26 @@ The function of this project is to display property sales in New York City for e
 ## ROLE TEAM MEMBER:
 
 * Project Leader:
+
    Aufa Edith Ramdani
 
 * Front End Engineering:
+  
    Lismala
    Dameria Naomi Simatupang
    Tomi Wijaya
 
 * Deployment:
+  
    Rangga Rizky Pratama
 
 * Pitch Deck Team:
-   Distia ISma Nadhifah
+  
+   Distia Isma Nadhifah
    Fauzia Rahmah
 
 * Quality Assurance:
+  
    Afida Nurul Yasmin
    Vina Nur Titisari
    Brian Sanjaya
