@@ -50,6 +50,7 @@ The function of this project is to display property sales in New York City for e
 https://km-feb24-jakarta-9.vercel.app/
 
 ## DOKUMENTASI PITCH DECK
+https://drive.google.com/file/d/1SmOx1K7GuEK6RlL1mYGQUfv8T2DshDDy/view?usp=sharing
 
 ![Screenshot Deck SE](https://github.com/Kampus-Merdeka-Software-Engineering/km-feb24-jakarta-9/assets/167766113/fb988f0f-47cd-4bab-a386-aff6702152f4)
 
