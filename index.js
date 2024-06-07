@@ -263,6 +263,7 @@ function createTable(data) {
     responsive: true,
     autoWidth: false,
     scrollX: true,
+    order: [[1, 'asc']]
   });
 }
 
