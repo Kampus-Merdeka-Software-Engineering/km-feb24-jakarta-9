@@ -355,12 +355,13 @@ async function updateTotals(data) {
 async function fetchLineSalesTrendbyBoroughandSalePrice(data) {
   try {
     const boroughColors = {
-      Manhattan: 'gray',
-      Bronx: 'navy',
-      Queens: 'powder blue',
-      "Staten Island": 'teal',
-      Brooklyn: 'purple'
+      Manhattan: '#F1E2D3',
+      Bronx: '#A6CDA3',
+      Queens: '#DDC9BD',
+      "Staten Island": '#B3BBE4',
+      Brooklyn: '#CEEEF4'
     };
+
 
     // Ambil nilai yang dipilih dari checkbox borough
     const selectedBoroughs = Array.from(
@@ -487,12 +488,13 @@ async function fetchLineSalesTrendbyBoroughandSalePrice(data) {
 function fetchYearofTotalResidentialUnitsAndCommercialUnitsbyBorough(data) {
   try {
     const boroughColors = {
-      Manhattan: 'gray',
-      Bronx: 'navy',
-      Queens: 'powder blue',
-      "Staten Island": 'teal',
-      Brooklyn: 'purple'
+      Manhattan: '#F1E2D3',
+      Bronx: '#A6CDA3',
+      Queens: '#DDC9BD',
+      "Staten Island": '#B3BBE4',
+      Brooklyn: '#CEEEF4'
     };
+
 
     // Ambil nilai yang dipilih dari checkbox borough
     const selectedBoroughs = Array.from(
@@ -694,15 +696,15 @@ function ResidentialUnitsandCommercialUnits (data) {
     {
       label: "Total COMMERCIAL_UNITS",
       data: commercialData,
-      backgroundColor: "rgba(54, 162, 235, 0.2)",
-      borderColor: "rgb(54, 162, 235)",
+      backgroundColor: "#FFB2A4",
+      borderColor: "#FF6962",
       borderWidth: 1,
     },
     {
       label: "Total RESIDENTIAL_UNITS",
       data: residentialData,
-      backgroundColor: "rgba(255, 99, 132, 0.2)",
-      borderColor: "rgb(255, 99, 132)",
+      backgroundColor: "#DFD3AB",
+      borderColor: "#C8AE7E",
       borderWidth: 1,
     },
   ];
