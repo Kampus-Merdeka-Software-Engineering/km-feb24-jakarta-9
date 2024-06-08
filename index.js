@@ -10,7 +10,7 @@ let tableView = null;
 // Fungsi untuk mengambil data
 async function fetchData() {
   const response = await fetch(
-    "https://raw.githubusercontent.com/Jakarta-9/Dataset-NYC-Property-Sales/main/NYC-dataset-Team-9.json"
+    "https://raw.githubusercontent.com/Jakarta-9/Dataset-NYC-Property-Sales/main/nyc-team-9.json"
   );
   return await response.json();
 }
@@ -248,14 +248,11 @@ function createTable(data) {
   tableView = new DataTable('#tableData', {
     columns: [
     { title: 'BOROUGH_NAME' },
-    { title: 'NEIGHBORHOOD' },
     { title: 'BUILDING_CLASS_CATEGORY' },
     { title: 'LOT.' },
     { title: 'RESIDENTIAL_UNITS' },
     { title: 'COMMERCIAL_UNITS' },
     { title: 'TOTAL_UNITS.' },
-    { title: 'GROSS_SQUARE_FEET' },
-    { title: 'YEAR_BUILT' },
     { title: 'SALE_PRICE' },
     { title: 'SALE_DATE' }
     ],
