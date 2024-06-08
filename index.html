@@ -55,61 +55,61 @@
         </div>
       </div>
     </header>
-      <section>
-        <div class="container">
-          <div class="filter-bar">
-            <h2 class="dashboard" id="dashboard">NYC PROPERTY SALES</h2>
-            <div class="right-elements">
-              <div class="date">
-                <button class="dropdate">
-                  Date
-                  <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-date" id="dropdown-date">
-                  <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
-                </div>
-              </div>
-              <div class="borough">
-                <button class="dropborough">
-                  Borough
-                  <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-borough" id="dropdown-borough">
-                  <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
-                </div>
-              </div>
-              <div class="year">
-                <button class="dropyear">
-                  Year
-                  <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-year" id="dropdown-year">
-                  <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
-                </div>
-              </div>
-              <button id="filter-button" class="filter">
-                <i class="fa fa-filter"></i> Filter
+    <section>
+      <div class="container">
+        <div class="filter-bar">
+          <h2 class="dashboard" id="dashboard">NYC PROPERTY SALES</h2>
+          <div class="right-elements">
+            <div class="date">
+              <button class="dropdate">
+                Date
+                <i class="fa fa-caret-down"></i>
               </button>
+              <div class="dropdown-date" id="dropdown-date">
+                <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
+              </div>
             </div>
+            <div class="borough">
+              <button class="dropborough">
+                Borough
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-borough" id="dropdown-borough">
+                <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
+              </div>
+            </div>
+            <div class="year">
+              <button class="dropyear">
+                Year
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-year" id="dropdown-year">
+                <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
+              </div>
+            </div>
+            <button id="filter-button" class="filter">
+              <i class="fa fa-filter"></i> Filter
+            </button>
           </div>
-          <div class="row">
-            <div class="col-total-borough">
-              <h1>0</h1>
-              <p>Total Borough</p>
-            </div>
-            <div class="col-total-sale-price">
-              <h1>0M</h1>
-              <p>Total Sale Price</p>
-            </div>
-            <div class="col-total-lot">
-              <h1>0jt</h1>
-              <p>Total Lot</p>
-            </div>
-            <div class="col-total-units">
-              <h1>0</h1>
-              <p>Total Units</p>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-total-borough">
+            <h1>0</h1>
+            <p>Total Borough</p>
           </div>
+          <div class="col-total-sale-price">
+            <h1>0M</h1>
+            <p>Total Sale Price</p>
+          </div>
+          <div class="col-total-lot">
+            <h1>0jt</h1>
+            <p>Total Lot</p>
+          </div>
+          <div class="col-total-units">
+            <h1>0</h1>
+            <p>Total Units</p>
+          </div>
+        </div>
       </div>
 
       <div class="container">
@@ -124,26 +124,26 @@
           <canvas id="barChart2" style="width: 100%; max-width: 600rem"></canvas>
         </div>
       </div>
-  
+
       <div class="container">
         <p class="p">Year of Total Residential Units & Commercial Units by Borough </p>
         <div>
           <canvas id="barChart" style="width: 100%; max-width: 600rem"></canvas>
         </div>
       </div>
-  
+
       <div class="container">
         <p class="p">Tabel Data</p>
         <table id="tableData" class="display"></table>
       </div>
     </section>
-  
+
     <footer class="footer">
       <div class="container">
         <h1 class="about-us" id="about-us">OUR TEAMS</h1>
         <p>Introduce Our Self - TEAM 9</p>
         <div class="row">
-          <div class="col">
+          <div class="col-2">
             <div class="profile">
               <img src="./img/Disti-removebg-preview.png" alt="" style="border-radius: 50%" />
               <div class="nama">
@@ -152,7 +152,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-2">
             <div class="profile">
               <img src="./img/fauzia-removebg-preview.png" alt="" style="border-radius: 50%" />
               <div class="nama">
@@ -161,9 +161,7 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col">
+          <div class="col-2">
             <div class="profile">
               <img src="./img/aufa-removebg-preview.png" alt="" style="border-radius: 50%" />
               <div class="nama">
@@ -172,7 +170,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-2">
             <div class="profile">
               <img src="./img/naomi-removebg-preview.png" alt="" style="border-radius: 50%" />
               <div class="nama">
@@ -181,7 +179,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-2">
             <div class="profile">
               <img src="./img/isma-removebg-preview (1).png" alt="" style="border-radius: 50%" />
               <div class="nama">
@@ -190,64 +188,62 @@
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="profile">
-              <img src="./img/tomi-removebg-preview.png" alt="" style="border-radius: 50%" />
-              <div class="nama">
-                <p>Tomi Wijaya</p>
-                <p>Front End Engineer</p>
+          <div class="row">
+            <div class="col-2">
+              <div class="profile">
+                <img src="./img/tomi-removebg-preview.png" alt="" style="border-radius: 50%" />
+                <div class="nama">
+                  <p>Tomi Wijaya</p>
+                  <p>Front End Engineer</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="profile">
+                <img src="./img/rangga2-removebg-preview.png" alt="" style="border-radius: 50%" />
+                <div class="nama">
+                  <p>Rangga Rizky Pratama</p>
+                  <p>Deployment Team</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="profile">
+                <img src="./img/vina__1_-removebg-preview.png" alt="" style="border-radius: 50%" />
+                <div class="nama">
+                  <p>Vina Nur Titisari</p>
+                  <p>Quality Assurance</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="profile">
+                <img src="./img/Afida-removebg-preview.png" alt="" style="border-radius: 50%" />
+                <div class="nama">
+                  <p>Afida Nurul Yasmin</p>
+                  <p>Quality Assurance</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="profile">
+                <img src="./img/brian-removebg-preview.png" alt="" style="border-radius: 50%" />
+                <div class="nama">
+                  <p>Brian Sanjaya</p>
+                  <p>Quality Assurance</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="profile">
-              <img src="./img/rangga2-removebg-preview.png" alt="" style="border-radius: 50%" />
-              <div class="nama">
-                <p>Rangga Rizky Pratama</p>
-                <p>Deployment Team</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="profile">
-              <img src="./img/vina__1_-removebg-preview.png" alt="" style="border-radius: 50%" />
-              <div class="nama">
-                <p>Vina Nur Titisari</p>
-                <p>Quality Assurance</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="profile">
-              <img src="./img/Afida-removebg-preview.png" alt="" style="border-radius: 50%" />
-              <div class="nama">
-                <p>Afida Nurul Yasmin</p>
-                <p>Quality Assurance</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="profile">
-              <img src="./img/brian-removebg-preview.png" alt="" style="border-radius: 50%" />
-              <div class="nama">
-                <p>Brian Sanjaya</p>
-                <p>Quality Assurance</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </footer>
-  
+
     <div class="bottom-bar">
       <a href="mailto:jakarta.team9.tarevou@gmail.com" class="email-link">
-        <i class="fas fa-envelope"></i>  jakarta.team9.tarevou@gmail.com
+        <i class="fas fa-envelope"></i> jakarta.team9.tarevou@gmail.com
       </a>
       <p>&copy; 2024 TEAM 9 - SECTION JAKARTA</p>
     </div>
-  
+
     <script>
       document
         .getElementById("about-us-btn")
