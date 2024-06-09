@@ -55,115 +55,100 @@
         </div>
       </div>
     </header>
+
     <section>
-      <div class="container">
-        <div class="filter-bar">
-          <h2 class="dashboard" id="dashboard">NYC PROPERTY SALES</h2>
-          <div class="right-elements">
-            <div class="date">
-              <div class="dropdown-container">
-              <button class="dropdate">
-                Date
-                <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-date" id="dropdown-date">
-                <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
-              </div>
-            </div>
-            </div>
-            <div class="borough">
-              <div class="dropdown-container">
-              <button class="dropborough">
-                Borough
-                <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-borough" id="dropdown-borough">
-                <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
-              </div>
-            </div>
-            </div>
-            <div class="year">
-              <div class="dropdown-container">
-              <button class="dropyear">
-                Year
-                <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-year" id="dropdown-year">
-                <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
-              </div>
-            </div>
-            </div>
-            <button id="filter-button" class="filter">
-              Filter
-              <i class="fa fa-filter"></i> 
+      <div class="filter-bar">
+        <h2 class="dashboard" id="dashboard">NYC PROPERTY SALES</h2>
+        <div class="right-elements">
+          <div class="date">
+            <button class="dropdate">
+              Date
+              <i class="fa fa-caret-down"></i>
             </button>
+            <div class="dropdown-date" id="dropdown-date">
+              <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
+            </div>
+          </div>
+          <div class="borough">
+            <button class="dropborough">
+              Borough
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-borough" id="dropdown-borough">
+              <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
+            </div>
+          </div>
+          <div class="year">
+            <button class="dropyear">
+              Year
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-year" id="dropdown-year">
+              <!-- Checkbox dan label akan ditambahkan di sini oleh JavaScript -->
+            </div>
+          </div>
+          <button id="filter-button" class="filter">
+            Filter
+            <i class="fa fa-filter"></i>
+          </button>
+        </div>
+      </div>
+
+
+      <section class="summary">
+        <div class="summary-container">
+          <div class="col-total-borough">
+            <h1>0</h1>
+            <p>Total Borough</p>
+          </div>
+          <div class="col-total-sale-price">
+            <h1>0M</h1>
+            <p>Total Sale Price</p>
+          </div>
+          <div class="col-total-lot">
+            <h1>0jt</h1>
+            <p>Total Lot</p>
+          </div>
+          <div class="col-total-units">
+            <h1>0</h1>
+            <p>Total Units</p>
           </div>
         </div>
-        <section class="summary">
-          <div class="summary-container">
-            <div class="col-total-borough">
-              <h1>0</h1>
-              <p>Total Borough</p>
-            </div>
-            <div class="col-total-sale-price">
-              <h1>0M</h1>
-              <p>Total Sale Price</p>
-            </div>
-            <div class="col-total-lot">
-              <h1>0jt</h1>
-              <p>Total Lot</p>
-            </div>
-            <div class="col-total-units">
-              <h1>0</h1>
-              <p>Total Units</p>
-            </div>
-          </div>
-        </section>        
-      </div>
-      
-      <div class="row">
-        <div class="col-12">
-          <div class="container">
-              <div class="chart">
+
+
+        <div class="row">
+          <div class="col-12">
+            <div class="chart">
               <p class="p">Sales Trend by Borough and Sale Price</p>
-                <canvas id="myChart" style="width: 100%; max-width: 600rem"></canvas>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="container">
-              <div class="chart">
-              <p class="p">Unit Trend by Residential Units and Commercial Units of Month, Year</p>
-                <canvas id="barChart2" style="width: 100%; max-width: 600rem"></canvas>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-            <div class="container">
-                <div class="chart">
-                <p class="p">Year of Total Residential Units & Commercial Units by Borough </p>
-                  <canvas id="barChart" style="width: 100%; max-width: 600rem"></canvas>
-                </div>
+              <canvas id="myChart" style="width: 100%; max-width: 600rem"></canvas>
             </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="container">
-              <div class="chart">
-              <p class="p">Tabel Data</p>
-              <table id="tableData" class="display"></table>
-              </div>
           </div>
         </div>
-      </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="chart">
+              <p class="p">Unit Trend by Residential Units and Commercial Units of Month, Year</p>
+              <canvas id="barChart2" style="width: 100%; max-width: 600rem"></canvas>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="chart">
+              <p class="p">Year of Total Residential Units & Commercial Units by Borough </p>
+              <canvas id="barChart" style="width: 100%; max-width: 600rem"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="chart">
+              <p class="p">Data Table</p>
+              <table id="tableData" class="display"></table>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
     <footer class="footer">
@@ -216,53 +201,55 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-2">
-              <div class="profile">
-                <img src="./img/tomi-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Tomi Wijaya</p>
-                  <p>Front End Engineer</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-2">
-              <div class="profile">
-                <img src="./img/rangga2-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Rangga Rizky Pratama</p>
-                  <p>Deployment Team</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-2">
-              <div class="profile">
-                <img src="./img/vina__1_-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Vina Nur Titisari</p>
-                  <p>Quality Assurance</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-2">
-              <div class="profile">
-                <img src="./img/Afida-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Afida Nurul Yasmin</p>
-                  <p>Quality Assurance</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-2">
-              <div class="profile">
-                <img src="./img/brian-removebg-preview.png" alt="" style="border-radius: 50%" />
-                <div class="nama">
-                  <p>Brian Sanjaya</p>
-                  <p>Quality Assurance</p>
-                </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <div class="profile">
+              <img src="./img/tomi-removebg-preview.png" alt="" style="border-radius: 50%" />
+              <div class="nama">
+                <p>Tomi Wijaya</p>
+                <p>Front End Engineer</p>
               </div>
             </div>
           </div>
+          <div class="col-2">
+            <div class="profile">
+              <img src="./img/rangga2-removebg-preview.png" alt="" style="border-radius: 50%" />
+              <div class="nama">
+                <p>Rangga Rizky Pratama</p>
+                <p>Deployment Team</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="profile">
+              <img src="./img/vina__1_-removebg-preview.png" alt="" style="border-radius: 50%" />
+              <div class="nama">
+                <p>Vina Nur Titisari</p>
+                <p>Quality Assurance</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="profile">
+              <img src="./img/Afida-removebg-preview.png" alt="" style="border-radius: 50%" />
+              <div class="nama">
+                <p>Afida Nurul Yasmin</p>
+                <p>Quality Assurance</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="profile">
+              <img src="./img/brian-removebg-preview.png" alt="" style="border-radius: 50%" />
+              <div class="nama">
+                <p>Brian Sanjaya</p>
+                <p>Quality Assurance</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <div class="bottom-bar">
