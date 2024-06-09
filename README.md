@@ -22,27 +22,23 @@ The function of this project is to display property sales in New York City for e
 
 * Fitur Navigasi Bar
 
-![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/d7487f1b-3dab-403e-818a-a5b927777e53)
+![Fitur Navbar](https://github.com/Kampus-Merdeka-Software-Engineering/km-feb24-jakarta-9/assets/167766113/df2b2e35-af2c-4e6e-9a97-3d62a19af273)
 
 * Fitur Filter Bar
 
-![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/bd00c658-8f61-4b03-824c-a2d1aa251e88)
+![Fitur Filter Bar](https://github.com/Kampus-Merdeka-Software-Engineering/km-feb24-jakarta-9/assets/167766113/96b0babb-4969-495a-84d0-740eabfbd9f0)
 
-* Menampilkan line chart Sales Trend by Borough and Sale Price
+* Menampilkan Line Chart
 
-![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/3b09f8a2-2f88-416c-8fe8-30d269128df1)
+![Line Chart](https://github.com/Kampus-Merdeka-Software-Engineering/km-feb24-jakarta-9/assets/167766113/d8f61945-7c59-4117-9568-e1a01971461a)
 
-* Menampilkan Bar chart Unit Trend by Residential Units and Commercial Units of Month, Year
+* Menampilkan Bar Chart
 
-![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/d2e53ffa-a4f6-46f8-ab2f-2b116c30089c)
+![Bar Chart](https://github.com/Kampus-Merdeka-Software-Engineering/km-feb24-jakarta-9/assets/167766113/5da10e6d-1aae-43c5-9407-0d1a0604473c)
 
-* Menampilkan Bar chart Year of Total Residential Units & Commercial Units by Borough
+* Menampilkan Data Table
 
-![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/59a05630-89cc-422e-8411-e3f70d2ffb37)
-
-* Menampilkan Data Tabel
-
-![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/344be961-0919-4d9a-b56d-9113de26bd52)
+![Data Table](https://github.com/Kampus-Merdeka-Software-Engineering/km-feb24-jakarta-9/assets/167766113/92205a5c-5e9d-4f20-a970-cf50a39c38ed)
 
 
 ## LINK VERCEL (DEPLOYMENT):
@@ -50,13 +46,13 @@ The function of this project is to display property sales in New York City for e
 https://km-feb24-jakarta-9.vercel.app/
 
 ## DOKUMENTASI PITCH DECK
+
 https://drive.google.com/file/d/1SmOx1K7GuEK6RlL1mYGQUfv8T2DshDDy/view?usp=sharing
 
 ![Screenshot Deck SE](https://github.com/Kampus-Merdeka-Software-Engineering/km-feb24-jakarta-9/assets/167766113/fb988f0f-47cd-4bab-a386-aff6702152f4)
 
 ## DOKUMENTASI QUALITY ASSURANCE
+
 https://drive.google.com/file/d/1sH0ce9ezOEyjM5DC_Cw1cmoY5rfQFDNM/view?usp=sharing
 
 ![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/154f509d-89b2-4cec-bb45-bcc3a3c59960)
-![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/29df429d-c5db-4bd4-9b98-887a7675a091)
-![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/26af4ffb-e360-4026-818f-d467c5a44b18)
