@@ -20,9 +20,9 @@ window.onload = async function () {
   move();
   cachedData = await fetchData();
 
-  populateBoroughDropdown(cachedData); // Isi dropdown borough
-  populateDateDropdown(cachedData); // Isi dropdown bulan, tahun pada date
-  populateYearDropdown(cachedData); // Isi dropdown tahun
+  populateBoroughDropdown(); // Isi dropdown borough
+  populateDateDropdown(); // Isi dropdown bulan, tahun pada date
+  populateYearDropdown(); // Isi dropdown tahun
   
   filterData(); // Panggil filterData di sini agar filteredData diinisialisasi
 
@@ -35,7 +35,7 @@ window.onload = async function () {
 };
 
 // Fungsi untuk mengisi dropdown borough
-function populateBoroughDropdown(data) {
+function populateBoroughDropdown() {
   const boroughOrder = [
     "Manhattan",
     "Brooklyn",
@@ -44,7 +44,7 @@ function populateBoroughDropdown(data) {
     "Staten Island",
   ];
   const uniqueBoroughs = Array.from(
-    new Set(data.map((item) => item.BOROUGH_NAME))
+    new Set(cachedData.map((item) => item.BOROUGH_NAME))
   ).sort((a, b) => boroughOrder.indexOf(a) - boroughOrder.indexOf(b));
 
   const dropdownBorough = document.getElementById("dropdown-borough");
@@ -76,42 +76,44 @@ function populateDateDropdown() {
   const endDate = new Date("2017-08-31");
 
   const dropdownDate = document.getElementById("dropdown-date");
-  dropdownDate.innerHTML = ""; // Kosongkan konten sebelumnya
+  dropdownDate.innerHTML = ""; // Clear previous content
 
   const months = [];
   let currentDate = new Date(startDate);
-  while (currentDate <= endDate) {
+
+  // Terminate the loop when currentDate exceeds endDate
+  while (currentDate.getTime() <= endDate.getTime()) {
     const month = currentDate.toLocaleString("default", { month: "short" });
     const year = currentDate.getFullYear();
     months.push(`${month} ${year}`);
-    currentDate.setMonth(currentDate.getMonth() + 1);
+    currentDate.setMonth(currentDate.getMonth() + 1); // Update currentDate value for next iteration
   }
 
   months.forEach((monthYear) => {
     const label = document.createElement("label");
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.name = "date"; // Tambahkan name untuk checkbox
-    checkbox.value = monthYear; // Tambahkan value untuk checkbox
+    checkbox.name = "date";
+    checkbox.value = monthYear;
     checkbox.id = `date-${monthYear}`;
-    checkbox.checked = true; // Setel checkbox aktif secara default
+    checkbox.checked = true;
     label.htmlFor = `date-${monthYear}`;
     label.appendChild(checkbox);
     label.appendChild(document.createTextNode(monthYear));
     dropdownDate.appendChild(label);
   });
 
-  // Tambahkan event listener untuk mencegah menutup dropdown saat mengklik di dalamnya
+  // Add event listener to prevent dropdown from closing when clicked inside
   dropdownDate.addEventListener("click", function (event) {
     event.stopPropagation();
   });
 }
 
 // Fungsi untuk mengisi dropdown tahun
-function populateYearDropdown(data) {
+function populateYearDropdown() {
   const years = new Set();
 
-  data.forEach((item) => {
+  cachedData.forEach((item) => {
     const date = new Date(item.SALE_DATE);
     const year = date.getFullYear();
     if (!isNaN(year)) {
@@ -142,7 +144,6 @@ function populateYearDropdown(data) {
     event.stopPropagation();
   });
 }
-
 // Fungsi untuk memfilter data berdasarkan checkbox borough, date, dan year
 function filterData() {
   // Ambil nilai yang dipilih dari checkbox borough
@@ -770,5 +771,4 @@ function showContent() {
   document.querySelector(".loading-container").style.display = "none";
   document.querySelector(".content").style.display = "block";
 }
-
 
