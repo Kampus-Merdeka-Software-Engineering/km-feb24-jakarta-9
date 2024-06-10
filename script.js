@@ -354,11 +354,11 @@ async function updateTotals(data) {
 async function fetchLineSalesTrendbyBoroughandSalePrice(data) {
   try {
     const boroughColors = {
-      Manhattan: '#F1E2D3',
-      Bronx: '#A6CDA3',
-      Queens: '#DDC9BD',
-      "Staten Island": '#B3BBE4',
-      Brooklyn: '#CEEEF4'
+      Manhattan: '#00B1B0',
+      Bronx: '#FF8370',
+      Queens: '#FEC84D',
+      "Staten Island": '#E42256',
+      Brooklyn: '#A8E10C'
     };
 
 
@@ -487,11 +487,11 @@ async function fetchLineSalesTrendbyBoroughandSalePrice(data) {
 function fetchYearofTotalResidentialUnitsAndCommercialUnitsbyBorough(data) {
   try {
     const boroughColors = {
-      Manhattan: '#F1E2D3',
-      Bronx: '#A6CDA3',
-      Queens: '#DDC9BD',
-      "Staten Island": '#B3BBE4',
-      Brooklyn: '#CEEEF4'
+      Manhattan: '#00B1B0',
+      Bronx: '#FF8370',
+      Queens: '#FEC84D',
+      "Staten Island": '#E42256',
+      Brooklyn: '#A8E10C'
     };
 
 
@@ -695,15 +695,15 @@ function ResidentialUnitsandCommercialUnits (data) {
     {
       label: "Total COMMERCIAL_UNITS",
       data: commercialData,
-      backgroundColor: "#FFB2A4",
-      borderColor: "#FF6962",
+      backgroundColor: "#8A6FDF",
+      borderColor: "#636363",
       borderWidth: 1,
     },
     {
       label: "Total RESIDENTIAL_UNITS",
       data: residentialData,
-      backgroundColor: "#DFD3AB",
-      borderColor: "#C8AE7E",
+      backgroundColor: "#FF5765",
+      borderColor: "#636363",
       borderWidth: 1,
     },
   ];
@@ -771,4 +771,5 @@ function showContent() {
   document.querySelector(".loading-container").style.display = "none";
   document.querySelector(".content").style.display = "block";
 }
+
 
