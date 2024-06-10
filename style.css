@@ -79,6 +79,9 @@ html {
   [class*="col-"] {
     width: 100%;
   }
+  section { 
+    margin: 0px;
+  }
 }
 
 /* General Styles */
