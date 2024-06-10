@@ -56,3 +56,6 @@ https://drive.google.com/file/d/1SmOx1K7GuEK6RlL1mYGQUfv8T2DshDDy/view?usp=shari
 https://drive.google.com/file/d/1sH0ce9ezOEyjM5DC_Cw1cmoY5rfQFDNM/view?usp=sharing
 
 ![image](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/154f509d-89b2-4cec-bb45-bcc3a3c59960)
+
+## QUALITY CODE
+![Quality code](https://github.com/Jakarta-9/km-feb24-jakarta-9/assets/168116790/d0db61b3-40c3-4cd8-955d-be1b8290b55d)
