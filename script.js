@@ -627,7 +627,7 @@ async function renderYearofTotalResidentialUnitsAndCommercialUnitsbyBorough(data
     // Buat chart baru
     chartContainer.chart = new Chart(chartContainer, config);
   } catch (error) {
-    console.error("Error fetching or parsing data:", error);
+    alert("Error fetching or parsing data: " + error);
   }
 }
 
